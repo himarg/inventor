@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active:
+    - default
+  cloud:
+    config:
+      uri:
+      - http://localhost:8888
+      enabled: true
+
+server:
+  port: 8301
+#  ssl:
+#    key-alias: self-signed-cert
+#    key-password: Welcome1
+#    key-store: classpath:keystore.jks
+#    key-store-provider: SUN
+#    key-store-type: JKS
+      
+#logging:
+#  file: error.log
+#  level: 
+#    ROOT: DEBUG

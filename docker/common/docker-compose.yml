@@ -1,0 +1,25 @@
+version: '2'
+services:
+  configserver:
+    image: himarg/config-server:0.0.1-SNAPSHOT
+    ports:
+       - "8888:8888"
+    environment:
+      ENCRYPT_KEY:       "IMSYMMETRIC"
+  database:
+    image: himarg/stock-db:latest
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "Welcome1"
+      MYSQL_DATABASE: "inventory"
+  stockapp:
+    image: himarg/stock-app:0.0.1-SNAPSHOT
+    ports:
+      - "8301:8301"
+    environment:
+      PROFILE: "default"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      CONFIGSERVER_PORT:   "8888"
+      DATABASESERVER_PORT: "3306"
+      ENCRYPT_KEY:       "IMSYMMETRIC"
